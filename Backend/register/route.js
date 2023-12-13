@@ -5,6 +5,4 @@ const regisRoutes = Router()
 
 regisRoutes.post("", register)
 
-module.exports = {
-    regisRoutes
-}
+module.exports = regisRoutes
