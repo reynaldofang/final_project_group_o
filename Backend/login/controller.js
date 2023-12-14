@@ -4,6 +4,10 @@ const generateToken = require("../utils/jwt-utils")
 const login = async (req, res)=>{
     const {username, password} = req.body
     const users = await req.db.collection("users").findOne({username})
+
+    if(!users){
+        return res.status(404).json({error: "Username or password is incorrect"})
+    }
     
     const isPasswordCorrect = await bcrypt.compare(password, users.password) 
     
