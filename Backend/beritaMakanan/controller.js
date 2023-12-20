@@ -13,6 +13,26 @@ const allNews = async (req, res)=>{
     }
 }
 
+
+const latestNews = async (req, res)=>{
+    try {
+        const latestNews = await req.db
+            .collection("news")
+            .find()
+            .sort({creationDate: -1})
+            .limit(5)
+            .toArray();
+    
+        res.status(200).json({
+            message: "Success to get the latest news",
+            news: latestNews,
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+
 const newsById = async (req, res)=>{
     try{
         const newsId = req.params.id
@@ -37,5 +57,6 @@ const newsById = async (req, res)=>{
 
 module.exports = {
     allNews,
+    latestNews,
     newsById
 }
