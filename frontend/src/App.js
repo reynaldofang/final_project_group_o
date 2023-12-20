@@ -3,9 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import News from "./components/news/Newsgrids";
-import OrderFood from "./components/order/Order";
 import Footer from "./components/Footer";
-
+import Order from "./components/order/Order";
 
 const App = () => {
   return (
@@ -13,7 +12,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/news" element={<News />} />
-        <Route path="/order-food" element={<OrderFood />} />
+        <Route path="/order-food" element={<Order />} />
       </Routes>
       <Footer />
     </Router>
