@@ -9,11 +9,14 @@ const Header = () => {
     <header className="bg-gray-800 p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold">My React App</h1>
+          <h1 className="text-2xl font-bold">Zero Hunger</h1>
         </div>
         <nav className="flex space-x-4">
           <NavLink to="/news" className="text-white hover:text-gray-300">
             News
+          </NavLink>
+          <NavLink to="/nutrition-info" className="text-white hover:text-gray-300">
+            Nutrition Info
           </NavLink>
           <NavLink to="/order-food" className="text-white hover:text-gray-300">
             Order Food

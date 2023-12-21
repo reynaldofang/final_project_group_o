@@ -1,4 +1,3 @@
-// src/components/NewsGrid.js
 import React from "react";
 
 const NewsGrid = () => {
