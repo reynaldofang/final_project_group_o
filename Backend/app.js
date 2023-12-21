@@ -4,6 +4,7 @@ const database = require("./db")
 const newsRoutes = require("./beritaMakanan/route")
 const regisRoutes = require("./register/route")
 const loginRoute = require("./login/route")
+const nutritionRoutes = require("./giziMakanan/route")
 
 const app = express()
 app.use(bodyParser.json())
@@ -11,6 +12,7 @@ app.use(database)
 
 app.use("/news", newsRoutes)
 app.use("/register", regisRoutes)
+app.use("/nutrition", nutritionRoutes)
 app.use("/login", loginRoute)
 
 app.listen(3000, ()=>{
