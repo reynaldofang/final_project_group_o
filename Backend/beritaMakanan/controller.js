@@ -41,7 +41,7 @@ const newsById = async (req, res)=>{
             return res.status(400).json({error: "Invalid news Id"})
         }
 
-        const news = await req.db.collection("news").findOne({_id: ObjectId(newsId)})
+        const news = await req.db.collection("news").findOne({_id: new ObjectId(newsId)})
 
         if(!news){
             return res.status(404).json({error: "News not found"})
