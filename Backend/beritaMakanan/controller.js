@@ -47,8 +47,14 @@ const newsById = async (req, res)=>{
             return res.status(404).json({error: "News not found"})
         }
 
+        const comment = await req.db.collection("comment").find(
+            {newsId: new ObjectId(newsId)},
+            {projection: {_id:0, newsId:0}}
+        ).toArray()
+
         res.status(200).json({
-            news: news
+            news: news,
+            comment: comment
         })
     } catch(error){
         res.status(500).json({error: error.message})
