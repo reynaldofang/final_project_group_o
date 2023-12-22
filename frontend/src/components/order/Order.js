@@ -62,7 +62,7 @@ const menuData = [
 const Order = () => {
   return (
     <div>
-      {}
+      {/* Our Partners */}
       <div className="bg-gray-100 py-8 text-center">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-4">Our Partners</h2>

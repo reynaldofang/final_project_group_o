@@ -12,7 +12,7 @@ const Header = () => {
           <h1 className="text-2xl font-bold">Zero Hunger</h1>
         </div>
         <nav className="flex space-x-4">
-          <NavLink to="/news" className="text-white hover:text-gray-300">
+          <NavLink to="/" className="text-white hover:text-gray-300">
             News
           </NavLink>
           <NavLink to="/nutrition-info" className="text-white hover:text-gray-300">
