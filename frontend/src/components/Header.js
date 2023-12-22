@@ -13,13 +13,13 @@ const Header = () => {
         </div>
         <nav className="flex space-x-4">
           <NavLink to="/" className="text-white hover:text-gray-300">
-            News
+            Berita Makanan
           </NavLink>
           <NavLink to="/nutrition-info" className="text-white hover:text-gray-300">
-            Nutrition Info
+            Informasi Gizi
           </NavLink>
           <NavLink to="/order-food" className="text-white hover:text-gray-300">
-            Order Food
+          Pemesanan Makanan
           </NavLink>
         </nav>
         <div>
