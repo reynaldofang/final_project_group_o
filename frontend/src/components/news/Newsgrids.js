@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NewsGrid = () => {
   const newsData = [
@@ -24,17 +25,21 @@ const NewsGrid = () => {
               key={index}
               className="bg-white p-6 rounded-lg shadow-md flex transition duration-300 hover:shadow-xl"
             >
-              {newsItem.imageUrl && (
-                <img
-                  src={newsItem.imageUrl}
-                  alt={newsItem.title}
-                  className="mr-4 rounded-md"
-                />
-              )}
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{newsItem.title}</h3>
-                <p className="text-gray-700">{newsItem.content}</p>
-              </div>
+              <Link to={`/news/${index}`}>
+                {newsItem.imageUrl && (
+                  <img
+                    src={newsItem.imageUrl}
+                    alt={newsItem.title}
+                    className="mr-4 rounded-md"
+                  />
+                )}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {newsItem.title}
+                  </h3>
+                  <p className="text-gray-700">{newsItem.content}</p>
+                </div>
+              </Link>
             </div>
           ))}
         </div>
@@ -44,18 +49,19 @@ const NewsGrid = () => {
         <div className="grid grid-cols-1 gap-6">
           {newsData.map((newsItem, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-              <img
-                src={newsItem.imageUrl}
-                alt={newsItem.title}
-                className="mb-4 rounded-md"
-              />
-              <h3 className="text-xl font-semibold mb-2">{newsItem.title}</h3>
-              <p className="text-gray-700">{newsItem.content}</p>
+              <Link to={`/news/${index}`}>
+                <img
+                  src={newsItem.imageUrl}
+                  alt={newsItem.title}
+                  className="mb-4 rounded-md"
+                />
+                <h3 className="text-xl font-semibold mb-2">{newsItem.title}</h3>
+                <p className="text-gray-700">{newsItem.content}</p>
+              </Link>
             </div>
           ))}
         </div>
       </section>
-      
     </>
   );
 };
