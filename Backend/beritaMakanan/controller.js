@@ -20,7 +20,7 @@ const latestNews = async (req, res)=>{
             .collection("news")
             .find()
             .sort({creationDate: -1})
-            .limit(5)
+            .limit(6)
             .toArray();
     
         res.status(200).json({
