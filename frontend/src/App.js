@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Header from "./components/Header";
 import News from "./components/news/Newsgrids";
 import Footer from "./components/Footer";
-import Order from "./components/order/Order";
 import NutritionInfo from "./components/Nutrition/NutritionInfo";
 import NewsDetailPage from "./components/news/NewsDetailPage";
 import LoginForm from "./components/auth/Login";
@@ -29,7 +28,6 @@ const AppContent = () => {
         <Route path="/" element={<News />} />
         <Route path="/news/:_id" element={<NewsDetailPage />} />
         <Route path="/nutrition-info" element={<NutritionInfo />} />
-        <Route path="/order-food" element={<Order />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
       </Routes>
