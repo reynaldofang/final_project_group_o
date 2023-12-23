@@ -4,9 +4,17 @@ const allNews = async (req, res)=>{
     try{
         const news = await req.db.collection("news").find().toArray()
 
+        const truncatedNews = news.map((item)=>{
+            return{
+                _id: item._id,
+                title: item.title,
+                content: item.content.length>26?`${item.content.substring(0, 26)}...` : item.content,
+            }
+        })
+
         res.status(200).json({
             message: "Success get all news",
-            news: news
+            news: truncatedNews
         })
     } catch(error){
         res.status(500).json({error: error.message})
@@ -22,10 +30,18 @@ const latestNews = async (req, res)=>{
             .sort({creationDate: -1})
             .limit(6)
             .toArray();
+
+        const truncatedNews = latestNews.map((item)=>{
+            return{
+                _id: item._id,
+                title: item.title,
+                content: item.content.length>26?`${item.content.substring(0, 26)}...` : item.content,
+            }
+        })
     
         res.status(200).json({
             message: "Success to get the latest news",
-            news: latestNews,
+            news: truncatedNews,
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
