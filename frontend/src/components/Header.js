@@ -23,10 +23,10 @@ const Header = () => {
           </NavLink>
         </nav>
         <div>
-          <button className="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue">
+          <NavLink to="/login" className="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue">
             <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
             <span className="hidden md:inline-block">Log In</span>
-          </button>
+          </NavLink>
         </div>
       </div>
     </header>
