@@ -17,4 +17,12 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    "/register",
+    createProxyMiddleware({
+      target: "https://final-project-group-o.cyclic.app",
+      changeOrigin: true,
+    })
+  );
 };
