@@ -18,9 +18,6 @@ const Header = () => {
           <NavLink to="/nutrition-info" className="text-white hover:text-gray-300">
             Informasi Gizi
           </NavLink>
-          <NavLink to="/order-food" className="text-white hover:text-gray-300">
-          Pemesanan Makanan
-          </NavLink>
         </nav>
         <div>
           <NavLink to="/login" className="flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue">

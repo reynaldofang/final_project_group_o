@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterForm = ({ onSubmit }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
-    username: '',
-    password: '',
-    role: 'user',
+    email: "",
+    username: "",
+    password: "",
+    role: "user",
   });
 
   const [formErrors, setFormErrors] = useState({
-    email: '',
-    username: '',
-    password: '',
+    email: "",
+    username: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -24,7 +26,7 @@ const RegisterForm = ({ onSubmit }) => {
 
     setFormErrors({
       ...formErrors,
-      [e.target.name]: '',
+      [e.target.name]: "",
     });
   };
 
@@ -35,7 +37,7 @@ const RegisterForm = ({ onSubmit }) => {
       if (!formData.email) {
         setFormErrors((prevErrors) => ({
           ...prevErrors,
-          email: 'Email is required',
+          email: "Email is required",
         }));
         return;
       }
@@ -43,7 +45,7 @@ const RegisterForm = ({ onSubmit }) => {
       if (!formData.username) {
         setFormErrors((prevErrors) => ({
           ...prevErrors,
-          username: 'Username is required',
+          username: "Username is required",
         }));
         return;
       }
@@ -51,42 +53,48 @@ const RegisterForm = ({ onSubmit }) => {
       if (!formData.password) {
         setFormErrors((prevErrors) => ({
           ...prevErrors,
-          password: 'Password is required',
+          password: "Password is required",
         }));
         return;
       }
 
-      const response = await axios.post('/register', formData);
+      const response = await axios.post("/register", formData);
       console.log("Register successful", response.data);
+      navigate("/login");
 
       onSubmit(formData);
 
       setFormData({
-        email: '',
-        username: '',
-        password: '',
-        role: 'user',
+        email: "",
+        username: "",
+        password: "",
+        role: "user",
       });
-
     } catch (error) {
       if (error.response && error.response.data) {
         setFormErrors(error.response.data);
       } else {
-        console.error('Error during registration:', error.message);
+        console.error("Error during registration:", error.message);
       }
     }
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-10">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="max-w-sm mx-auto mt-10 ">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-state-400 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
             className={`${
-              formErrors.email ? 'border-red-500' : 'border-gray-300'
+              formErrors.email ? "border-red-500" : "border-gray-300"
             } shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline-blue`}
             id="email"
             type="email"
@@ -95,15 +103,20 @@ const RegisterForm = ({ onSubmit }) => {
             onChange={handleChange}
             placeholder="Enter Email"
           />
-          {formErrors.email && <p className="text-red-500 text-xs italic">{formErrors.email}</p>}
+          {formErrors.email && (
+            <p className="text-red-500 text-xs italic">{formErrors.email}</p>
+          )}
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="username"
+          >
             Username
           </label>
           <input
             className={`${
-              formErrors.username ? 'border-red-500' : 'border-gray-300'
+              formErrors.username ? "border-red-500" : "border-gray-300"
             } shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline-blue`}
             id="username"
             type="text"
@@ -112,15 +125,20 @@ const RegisterForm = ({ onSubmit }) => {
             onChange={handleChange}
             placeholder="Enter Username"
           />
-          {formErrors.username && <p className="text-red-500 text-xs italic">{formErrors.username}</p>}
+          {formErrors.username && (
+            <p className="text-red-500 text-xs italic">{formErrors.username}</p>
+          )}
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
             className={`${
-              formErrors.password ? 'border-red-500' : 'border-gray-300'
+              formErrors.password ? "border-red-500" : "border-gray-300"
             } shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline-blue`}
             id="password"
             type="password"
@@ -129,10 +147,15 @@ const RegisterForm = ({ onSubmit }) => {
             onChange={handleChange}
             placeholder="Enter Password"
           />
-          {formErrors.password && <p className="text-red-500 text-xs italic">{formErrors.password}</p>}
+          {formErrors.password && (
+            <p className="text-red-500 text-xs italic">{formErrors.password}</p>
+          )}
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="role"
+          >
             Role
           </label>
           <select
@@ -156,7 +179,7 @@ const RegisterForm = ({ onSubmit }) => {
           </button>
         </div>
         <p className="text-sm text-gray-600">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link to="/login" className="text-blue-500 hover:underline">
             Login here
           </Link>
